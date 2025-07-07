@@ -1,8 +1,9 @@
 const express = require('express');
+const connectDB = require('./config/db');
 
 // Import routes
 const authRoutes = require('./routes/auth');
-// const eventRoutes = require('./routes/events');
+const eventRoutes = require('./routes/events');
 // const userRoutes = require('./routes/users');
 // const recommendationRoutes = require('./routes/recommendations');
 // const flyerRoutes = require('./routes/flyer');
@@ -16,13 +17,13 @@ app.use(express.json());
 
 // routes
 app.use('/api/auth', authRoutes);
-// app.use('/api/events', eventRoutes);
+app.use('/api/events', eventRoutes);
 // app.use('/api/users', userRoutes);
 // app.use('/api/recommendations', recommendationRoutes);
 // app.use('/api/flyer', flyerRoutes);
 
 // database connection
-// TODO: add database connection
+connectDB();
 
 app.get('/', (req, res) => {
   res.send('Server is working!');
