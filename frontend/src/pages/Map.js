@@ -1,7 +1,30 @@
+import React from "react";
+import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
+
+const containerStyle = {
+  width: "100%",
+  height: "100vh",
+};
+
+const center = {
+  lat: 32.8812,
+  lng: -117.2344,
+};
+
 function Map() {
-    return(
-        <h1>Map</h1>
-    )
+  const { isLoaded } = useJsApiLoader({
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY, // must be valid key
+  });
+
+  if (!isLoaded) return <div>Loading map...</div>;
+
+  return (
+    <GoogleMap
+      mapContainerStyle={containerStyle}
+      center={center}
+      zoom={15}
+    />
+  );
 }
 
 export default Map;
