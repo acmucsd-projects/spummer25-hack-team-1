@@ -1,6 +1,12 @@
+import Header from "../components/Header";
 function AddEvent() {
     return(
-        <h1>Add Event</h1>
+        <body>
+            
+           <Header></Header> <h1>Add Event</h1>
+           
+           </body>
+        
     )
 }
 
