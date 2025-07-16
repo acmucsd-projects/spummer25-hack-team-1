@@ -20,12 +20,13 @@ function Map() {
   if (!isLoaded) return <div>Loading map...</div>;
 
   return (
-    <body><Header></Header>
+    <main>
+      <Header></Header>
     <GoogleMap
       mapContainerStyle={containerStyle}
       center={center}
       zoom={15}
-    /></body>
+    /></main>
     
   );
 }

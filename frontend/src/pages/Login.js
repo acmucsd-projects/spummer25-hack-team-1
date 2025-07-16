@@ -2,21 +2,19 @@ import Header from "../components/Header";
 
 function Login() {
     return(
-        <body>
+        <main>
             <Header></Header>
-
-
             
         <h1>Welcome to Eventory</h1>
         
         <div class="card">
                 <form class="card-content">
                     <button>Sign Up</button>
-                    <p>Or</p>
+                    <h2>Or</h2>
                     <button>Log In</button>
                 </form>
             </div>
-        </body>
+        </main>
         
     )
 }
