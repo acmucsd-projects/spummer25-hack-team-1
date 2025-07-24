@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Auth0 Express demo</title>
+</head>
+<body>
+  <h1>Welcome to Auth0 Express Authentication</h1>
+  
+  <% if (isAuthenticated) { %>
+    <p>Welcome, <%= user.name %>!</p>
+    <p>Email: <%= user.email %></p>
+    <a href="/profile">View Profile</a>
+    <br>
+    <a href="/logout">Log Out</a>
+  <% } else { %>
+    <p>You are not logged in</p>
+    <a href="/login">Log In</a>
+  <% } %>
+  
+  <h3>Auth0 Configuration Info</h3>
+  <ul>
+    <li><strong>Callback URL:</strong> http://localhost:3000/callback</li>
+    <li><strong>Logout URL:</strong> http://localhost:3000</li>
+    <li><strong>Web Origin:</strong> http://localhost:3000</li>
+  </ul>
+</body>
+</html>

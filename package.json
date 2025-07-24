@@ -1,0 +1,24 @@
+{
+  "name": "spummer25-hack-team-1",
+  "version": "1.0.0",
+  "description": "This is a full-stack application built with the MERN stack (MongoDB, Express.js, React.js, Node.js).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/acmucsd-projects/spummer25-hack-team-1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/acmucsd-projects/spummer25-hack-team-1/issues"
+  },
+  "homepage": "https://github.com/acmucsd-projects/spummer25-hack-team-1#readme",
+  "dependencies": {
+    "express": "^5.1.0",
+    "express-openid-connect": "^2.18.1"
+  }
+}

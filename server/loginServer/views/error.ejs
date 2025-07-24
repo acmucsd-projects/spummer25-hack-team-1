@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Error</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #fff5f5;
+      color: #333;
+    }
+    .error-container {
+      background: white;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      border-left: 5px solid #e74c3c;
+    }
+    h1 {
+      color: #e74c3c;
+    }
+    .error-details {
+      background: #f9f9f9;
+      padding: 15px;
+      border-radius: 5px;
+      margin-top: 20px;
+      font-family: monospace;
+      white-space: pre-wrap;
+      overflow-wrap: break-word;
+    }
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background: #3498db;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="error-container">
+    <h1>Authentication Error</h1>
+    <p><%= message %></p>
+    
+    <% if (error) { %>
+      <div class="error-details">
+        <%= error %>
+      </div>
+    <% } %>
+    
+    <p>Please check the following configurations:</p>
+    <ul>
+      <li>Ensure the AUTH0_ISSUER_BASE_URL in your .env f_

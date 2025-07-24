@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Profile</title>
+</head>
+<body>
+  <h1>User Profile</h1>
+  
+  <% if (user) { %>
+    <img src="<%= user.picture %>" alt="User Avatar" width="100">
+    <p><strong>Name:</strong> <%= user.name %></p>
+    <p><strong>Email:</strong> <%= user.email %></p>
+    <p><strong>Nickname:</strong> <%= user.nickname %></p>
+    
+    <h3>ID Token Claims</h3>
+    <pre><%= JSON.stringify(user, null, 2) %></pre>
+  <% } else { %>
+    <p>User information not found</p>
+  <% } %>
+  
+  <a href="/">Back to Home</a> | <a href="/logout">Log Out</a>
+</body>
+</html>
