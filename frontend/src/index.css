@@ -133,3 +133,36 @@ h3{
   margin-top: 5px;
   font-size: 24px;
 }
+
+.text-event {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-weight: bold;
+  text-align: left;
+  margin-left: 5%;
+}
+
+.button-event {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.event-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  align-items: center;
+}
+
+h2{
+  color: #033a39;
+  margin-bottom: 5px;
+}
+
+h4{
+  font-size: 20px;
+  color: #074e4c;
+}
