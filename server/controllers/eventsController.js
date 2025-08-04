@@ -56,3 +56,19 @@ exports.getEventById = async (req, res) => {
     res.status(500).json({ error: "Server error" });
   }
 };
+
+exports.deleteEvent = async (req, res) => {};
+
+exports.commentOnEvent = async (req, res) => {};
+
+exports.likeUnlikeEvent = async (req, res) => {};
+
+exports.trackUntrackEvent = async (req, res) => {};
+
+exports.getLikedEvents = async (req, res) => {};
+
+exports.getTrackedEvents = async (req, res) => {};
+
+exports.getUserEvents = async (req, res) => {};
+
+exports.getAllEvents = async (req, res) => {};
