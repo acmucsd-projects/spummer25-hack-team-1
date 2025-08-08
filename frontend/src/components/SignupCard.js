@@ -11,11 +11,11 @@ function SignupCard() {
     const gradYears = ["2026", "2027", "2028","2029", "Grad Student", "Other"]
     
     return(
-            <div class="card">
+            <div className="card">
                 <h2>Sign up to Eventory</h2>
-                <div class="card-content">
+                <div className="card-content">
                 <input type="text" placeholder="Name" onChange={(e) => setName(e.target.value)}></input>
-                <input type="text" placeholder="Email" onChange={(e) => setGradYear(e.target.value)}></input>
+                <input type="text" placeholder="Email" onChange={(e) => setEmail(e.target.value)}></input>
 
                 <select onChange={(e) => setCollege(e.target.value)}>
                 {colleges.map((d, i) =>

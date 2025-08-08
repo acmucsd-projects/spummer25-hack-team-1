@@ -1,17 +1,12 @@
 import Header from "../components/Header";
-import EventCard from "../components/EventCard";
+import HomeProfileCard from "../components/HomeProfileCard";
+import TrendingEventsCard from "../components/TrendingEventsCard";
+import CombinedInterface from "../components/CombinedInterface";
 
 function Home() {
     return(
         <main>
-            <Header></Header>
-            <h1>Home</h1>
-
-            <EventCard
-            name="ACM Spummer Showcase"
-            organizer="ACM"
-            description="Summer Project showcase"
-            ></EventCard>
+            <CombinedInterface/>
         </main>
     )
 }

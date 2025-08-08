@@ -16,6 +16,45 @@
     margin-right: 3rem;
 }
 
+.pfp-home{
+    width:80px;
+    height:80px;
+    margin-right: .5rem;
+}
+
+.profile-card-home{
+    display:flex;
+    background-color: #16a19c;
+    flex-direction: column; 
+    justify-content: flex-start; 
+    align-items: flex-start; 
+    border-radius: 1.5rem;
+    padding: 1rem;
+    margin: 1.5rem auto 0rem 1rem;
+    max-width: 260px;  
+    height:50vh;
+    width: 90%;               
+}
+
+.info-home{
+    display: flex;
+    flex-direction:row;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.home-name-college{
+    font-family:sans-serif;
+    text-align: left;
+}
+
+.profile-information-home{
+    display:flex;
+    flex-direction: column;
+    color:#f3d3bd;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
 .pfp-info{
     display: flex;
     flex-direction:row;
@@ -30,9 +69,6 @@
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-.pfp-name-college{
-    font-family:sans-serif;
-}
 
 header{
     display: flex;
@@ -40,4 +76,65 @@ header{
     gap: 3rem;
     align-items: center;
     height: 0.7rem;
+}
+
+.trending-events{
+    display:flex;
+    background-color: #16a19c;
+    flex-direction: column; 
+    border-radius: 1.5rem;
+    padding: 1rem;
+    margin: 1.5rem 1rem 0rem auto;
+    max-width: 160px;  
+    height:50vh;
+    width: 90%;              
+}
+
+.all-trending-events{
+    display:flex;
+    flex-direction: column;
+    color:#f3d3bd;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding-top:.5rem
+}
+
+.cards-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    /* padding: 1.5rem; */
+}
+
+body, main {
+    margin-top:4rem;
+    padding: 0;
+}
+
+h5{
+    padding: 0;
+    margin: 1.5rem;
+}
+
+.trend-header{
+    margin:0;
+    padding: 0;
+}
+
+
+.main-feed{
+    display:flex;
+    background-color: #16a19c;
+    flex-direction: column; 
+    border-radius: 1.5rem;
+    padding: 1rem;
+    margin: 1.5rem 1rem 0rem 0rem;
+    max-width: 800px;  
+    height:100vh;
+    width: 90%;  
+}
+
+
+.icons{
+    width:25px;
+    height:25px;
 }
