@@ -21,6 +21,7 @@ const eventSchema = new mongoose.Schema(
     },
     img: {
       type: String,
+       default: "" 
     },
     likes: [
       {
@@ -39,6 +40,10 @@ const eventSchema = new mongoose.Schema(
         text: {
           type: String,
           required: true,
+        },
+        like: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "User",
         },
         user: {
           type: mongoose.Schema.Types.ObjectId,

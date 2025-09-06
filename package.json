@@ -18,7 +18,10 @@
   },
   "homepage": "https://github.com/acmucsd-projects/spummer25-hack-team-1#readme",
   "dependencies": {
+    "body-parser": "^2.2.0",
     "express": "^5.1.0",
-    "express-openid-connect": "^2.18.1"
+    "express-openid-connect": "^2.18.1",
+    "mongodb": "^6.19.0",
+    "mongoose": "^8.17.1"
   }
 }
