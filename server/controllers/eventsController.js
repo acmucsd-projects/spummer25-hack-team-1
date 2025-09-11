@@ -88,28 +88,29 @@ exports.deleteEvent = async (req, res) => {
 };
 
 exports.commentOnEvent = async (req, res) => {
-  try{
+  try {
     const { text } = req.body;
     const eventId = req.params.id;
-    const userId = req.params._id;
+    // Get the user ID from the request object, which is populated by the protectRoute middleware
+    const userId = req.user._id; 
 
-    if(!text){
-      return res.status(400).json({ error: "Text field is required"});
-    } 
+    if (!text) {
+      return res.status(400).json({ error: "Text field is required" });
+    }
+
     const event = await Event.findById(eventId);
 
-    if(!event){
-      return res.status(404).json({ error: "Event not found"});
-    } 
+    if (!event) {
+      return res.status(404).json({ error: "Event not found" });
+    }
 
-    const comment = {user: userId, text};
+    const comment = { user: userId, text };
 
     event.comments.push(comment);
     await event.save();
 
-    res.status(200)
-
-  }catch(error){
+    res.status(200).json(event); // Send back the updated event
+  } catch (error) {
     console.error("Error in commentonEvent:", error);
     return res.status(500).json({ error: "Server error" });
   }
@@ -153,21 +154,115 @@ exports.likeUnlikeEvent = async (req, res) => {
 };
 
 exports.trackUntrackEvent = async (req, res) => {
+  try {
+    const userId = req.user._id;
+    const { id: eventId } = req.params;
 
+    const event = await Event.findById(eventId);
+    if (!event) {
+      return res.status(404).json({ error: "Event not found" });
+    }
+
+    const userTrackedEvent = event.tracks.includes(userId);
+
+    if (userTrackedEvent) {
+      // Untrack event
+      await Event.updateOne({ _id: eventId }, { $pull: { tracks: userId } });
+      res.status(200).json({ message: "Event untracked successfully" });
+    } else {
+      // Track event
+      event.tracks.push(userId);
+      await event.save();
+      res.status(200).json({ message: "Event tracked successfully" });
+    }
+  } catch (error) {
+    console.error("Error in trackUntrackEvent controller:", error);
+    return res.status(500).json({ error: "Server error" });
+  }
 };
 
-exports.getLikedEvents = async (req, res) => {};
+exports.getLikedEvents = async (req, res) => {
+  const userId = req.params.id;
+  try{
+    const user = await User.findById(userId);
+    if(!user) return res.status(400).json({error: "User not found"});
 
-exports.getTrackedEvents = async (req, res) => {};
+    const likedPost = await Post.find({ _id: {$in: user.likedPosts}})
+      .populate({
+        path:"user",
+        select:"-password",
+      })
+      .populate({
+        path:"comments.user",
+        select:"-password",
+      })
 
-exports.getUserEvents = async (req, res) => {};
+    res.status(200).json(likedPost);
+
+  }catch(srror){
+    console.log("Error in getLikedEvents controller:", error);
+    return res.status(500).json({ error: "Internal server error" });
+  }
+};
+
+exports.getTrackedEvents = async (req, res) => {
+  try {
+    const userId = req.user._id;
+
+    const trackedEvents = await Event.find({ tracks: userId })
+      .populate({
+        path: "user",
+        select: "-password",
+      })
+      .populate({
+        path: "comments.user",
+        select: "-password",
+      });
+
+    res.status(200).json(trackedEvents);
+  } catch (error) {
+    console.error("Error in getTrackedEvents controller:", error);
+    return res.status(500).json({ error: "Internal server error" });
+  }
+};
+
+exports.getUserEvents = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const userEvents = await Event.find({ user: id })
+      .populate({
+        path: "user",
+        select: "-password",
+      })
+      .populate({
+        path: "comments.user",
+        select: "-password",
+      });
+
+    res.status(200).json(userEvents);
+  } catch (error) {
+    console.error("Error in getUserEvents controller:", error);
+    return res.status(500).json({ error: "Internal server error" });
+  }
+};
 
 exports.getAllEvents = async (req, res) => {
   try{
     const event = await Event.find().sort({ createdAt: -1})
+    .populate({
+      path: "user",
+      select: "-password",
+    })
+    .populate({
+      path: "comments.user",
+      select: "-password",
+    })
+
     if(event.length === 0){
       return res.status(200).json([])
     }
+
     res.status(200).json(event)
   }catch(error){
     console.error("Error in getAllEvents controller:", error);
