@@ -183,7 +183,27 @@ exports.getLikedEvents = async (req, res) => {
 
 exports.getTrackedEvents = async (req, res) => {};
 
-exports.getUserEvents = async (req, res) => {};
+exports.getUserEvents = async (req, res) => {
+  try {
+    const { username } = req.params;
+
+    // Find the user by username
+    const user = await User.findOne({ username });
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // Find all events created by this user
+    const userEvents = await Event.find({ user: user._id }).sort({
+      createdAt: -1,
+    });
+
+    res.status(200).json(userEvents);
+  } catch (error) {
+    console.error("Error in getUserEvents controller:", error);
+    return res.status(500).json({ error: "Server error" });
+  }
+};
 
 exports.getAllEvents = async (req, res) => {
   try {
